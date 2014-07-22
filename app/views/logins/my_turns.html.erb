@@ -1,0 +1,208 @@
+<% @title = 'Mis Turnos' %>
+<div class="row">
+  <div class="col-md-6">
+  </div>
+</div>
+<div class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-picture"></i>Fila de $25</div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+      <a class="reload" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+      <table class="table table-condensed table-hover">
+        <thead>
+        <tr>
+          <th>Turno</th>
+          <th>Usuario</th>
+          <th>Estado</th>
+          <th>Pagos</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @turns.each do |t| %>
+            <tr>
+              <td><%= t.id %></td>
+              <td><%= t.login.username %></td>
+              <td><%= t.status %></td>
+              <td><%= t.payments.size %></td>
+                  <td>
+                    <%= link_to 'Ver', view_turn_path(t.id) %>
+                  </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+      <% if have_capacity?(1) %>
+        <% if turn_incomplete(1, 'pagado') %>
+            <div class="form-actions fluid">
+              <div class="row">
+                <div class="col-md-4 col-md-offset-2">
+                  <h3>Turno incompleto</h3>
+                  <p>Finaliza la creacion del Turno en la Fila $25. Lo iniciaste pero aún esta pendiente terminarlo</p>
+                </div>
+                <div class="col-md-6" style="padding-top: 35px;">
+                  <%= link_to 'Completar Creación', turn_wizard_path(1), class: 'btn btn-lg red' %>
+                </div>
+              </div>
+            </div>
+        <% else %>
+            <div class="form-actions fluid">
+              <div class="row">
+                <div class="col-md-4 col-md-offset-2">
+                  <h3>Crea tu Turno</h3>
+                  <p>Inicia la creacion del Turno en la Fila $25. No pierdas más tiempo.</p>
+                </div>
+                <div class="col-md-6" style="padding-top: 35px;">
+                  <%= link_to 'Crear Turno', turn_wizard_path(1), class: 'btn btn-lg green' %>
+                </div>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
+  </div>
+</div>
+
+<!-- FILA 2-->
+<% if @logged.level_id > 1 %>
+<div class="portlet box blue">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-picture"></i>Fila de $75</div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+      <a class="reload" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+      <table class="table table-condensed table-hover">
+        <thead>
+        <tr>
+          <th>Turno</th>
+          <th>Usuario</th>
+          <th>Estado</th>
+          <th>Pagos</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @turns2.each do |t| %>
+            <tr>
+              <td><%= t.id %></td>
+              <td><%= t.login.username %></td>
+              <td><%= t.status %></td>
+              <td><%= t.payments.size %></td>
+              <td>
+                <%= link_to 'Ver', view_turn_path(t.id) %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <% if have_capacity?(2) %>
+        <% if turn_incomplete(2, 'pagado') %>
+            <div class="form-actions fluid">
+              <div class="row">
+                <div class="col-md-4 col-md-offset-2">
+                  <h3>Turno incompleto</h3>
+                  <p>Finaliza la creacion del Turno en la Fila $75. Lo iniciaste pero aún esta pendiente terminarlo</p>
+                </div>
+                <div class="col-md-6" style="padding-top: 35px;">
+                  <%= link_to 'Completar Creación', turn_wizard_path(2), class: 'btn btn-lg red' %>
+                </div>
+              </div>
+            </div>
+        <% else %>
+            <div class="form-actions fluid">
+              <div class="row">
+                <div class="col-md-4 col-md-offset-2">
+                  <h3>Crea tu Turno</h3>
+                  <p>Inicia la creacion del Turno en la Fila $75. No pierdas más tiempo.</p>
+                </div>
+                <div class="col-md-6" style="padding-top: 35px;">
+                  <%= link_to 'Crear Turno', turn_wizard_path(2), class: 'btn btn-lg green' %>
+                </div>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
+  </div>
+</div>
+<% end %>
+
+<!-- FILA 3-->
+<% if current_login.level_id > 2 %>
+    <div class="portlet box purple">
+      <div class="portlet-title">
+        <div class="caption"><i class="icon-picture"></i>Fila de $125</div>
+        <div class="tools">
+          <a class="collapse" href="javascript:;"></a>
+          <a class="reload" href="javascript:;"></a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="table-responsive">
+          <table class="table table-condensed table-hover">
+            <thead>
+            <tr>
+              <th>Turno</th>
+              <th>Usuario</th>
+              <th>Estado</th>
+              <th>Pagos</th>
+              <th>Acciones</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% @turns3.each do |t| %>
+                <tr>
+                  <td><%= t.id %></td>
+                  <td><%= t.login.username %></td>
+                  <td><%= t.status %></td>
+                  <td><%= t.payments.size %></td>
+                  <td>
+                    <%= link_to 'Ver', view_turn_path(t.id) %>
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+        <% if have_capacity?(3) %>
+            <% if turn_incomplete(3, 'pagado') %>
+                <div class="form-actions fluid">
+                  <div class="row">
+                    <div class="col-md-4 col-md-offset-2">
+                      <h3>Turno incompleto</h3>
+                      <p>Finaliza la creacion del Turno en la Fila $125. Lo iniciaste pero aún esta pendiente terminarlo</p>
+                    </div>
+                    <div class="col-md-6" style="padding-top: 35px;">
+                      <%= link_to 'Completar Creación', turn_wizard_path(3), class: 'btn btn-lg red' %>
+                    </div>
+                  </div>
+                </div>
+            <% else %>
+                <div class="form-actions fluid">
+                  <div class="row">
+                    <div class="col-md-4 col-md-offset-2">
+                      <h3>Crea tu Turno</h3>
+                      <p>Inicia la creacion del Turno en la Fila $125. No pierdas más tiempo.</p>
+                    </div>
+                    <div class="col-md-6" style="padding-top: 35px;">
+                      <%= link_to 'Crear Turno', turn_wizard_path(3), class: 'btn btn-lg green' %>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+<% end %>

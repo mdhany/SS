@@ -1,0 +1,157 @@
+<% @title = 'Confirmar Pago' %>
+
+<div class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-picture"></i>Pago #<%= @payment.id %></div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+          <table class="table table-condensed table-hover">
+            <thead>
+            <tr>
+              <th>Turno</th>
+              <th>Usuario</th>
+              <th>Beneficiario</th>
+              <th>Estado</th>
+              <th>Método</th>
+              <th>Monto USD$</th>
+              <th>Info. del Pago</th>
+            </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                  <td><%= @payment.turn_id %></td>
+                  <td><%= @payment.login.username %></td>
+                  <td><%= @payment.beneficiary.username %></td>
+                  <td>
+                    <% if @payment.sent && @payment.received == true %>
+                        Confirmado
+                    <% elsif @payment.sent == true && @payment.received == false %>
+                        Enviado
+                    <% else %>
+                        Pendiente
+                    <% end %>
+                  </td>
+                  <td><%= @payment.gateway %></td>
+                  <td><%= @payment.amount %></td>
+                  <td><small><%= @payment.comment %></small></td>
+
+                </tr>
+            </tbody>
+
+          </table>
+    </div>
+  </div>
+</div>
+
+<h3>Datos del Usuario</h3>
+
+<div class="portlet box red">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="icon-reorder"></i> <%= @payment.login.username %>
+    </div></div>
+  <div class="portlet-body">
+    <div class="row">
+      <div class="col-md-6 ">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label col-md-4"><strong>Nombres:</strong></label>
+              <div class="col-md-8">
+                <p><%= @payment.login.first_name %> <%= @payment.login.last_name %></p>
+              </div>
+            </div>
+          </div>
+          <!--/span-->
+        </div><!-- .row -->
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label col-md-4"><strong>Teléfono:</strong></label>
+              <div class="col-md-8">
+                <p><%= @payment.login.phone %></p>
+              </div>
+            </div>
+          </div>
+          <!--/span-->
+        </div><!-- .row -->
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label col-md-4"><strong>Móvil:</strong></label>
+              <div class="col-md-8">
+                <p><%= @payment.login.mobile %></p>
+              </div>
+            </div>
+          </div>
+          <!--/span-->
+        </div><!-- .row -->
+
+
+
+      </div>
+      <div class="col-md-6 ">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label col-md-4"><strong>Email:</strong></label>
+              <div class="col-md-8">
+                <%= mail_to @payment.login.email, @payment.login.email  %>
+              </div>
+            </div>
+          </div>
+          <!--/span-->
+        </div><!-- .row -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label col-md-4"><strong>Cuidad:</strong></label>
+              <div class="col-md-8">
+                <p><%= @payment.login.city %></p>
+              </div>
+            </div>
+          </div>
+          <!--/span-->
+        </div><!-- .row -->
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label col-md-4"><strong>País:</strong></label>
+              <div class="col-md-8">
+                <p><%= @payment.login.country %></p>
+              </div>
+            </div>
+          </div>
+          <!--/span-->
+        </div><!-- .row -->
+      </div>
+    </div><!-- .row -->
+  </div> <!-- /.portlet-body -->
+</div>
+
+<div class="row">
+  <div class="col-md-5">
+    <p>Si ya confirmaste y has recibido el pago del usuario <b><%= @payment.login.username %></b> aproximadamente el <b><%= @payment.login.updated_at %></b></p>
+    <% if @payment.sent == true && @payment.received == false %>
+        <%= link_to payment_received_path(@payment), method: :post , class: 'btn btn-lg green' do %>
+            Confirmar Pago
+            <i class="icon-check"></i>
+        <% end %>
+
+        </td>
+    <% else %>
+        <td><%#= link_to 'Ver Detalles', payment_path(@payment) %></td>
+    <% end %>
+  </div>
+  <div class="col-md-7">
+
+  </div>
+</div>

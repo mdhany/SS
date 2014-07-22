@@ -1,0 +1,103 @@
+<li class="start ">
+  <a href="javascript:;">
+    <i class="icon-flickr"></i>
+    <span class="title">Las Filas</span>
+    <span class="arrow "></span>
+  </a>
+  <ul class="sub-menu">
+    <li >
+      <%= link_to turn_level_path(1) do %>
+          <i class="icon-money"></i>
+          Fila de $25
+      <% end %>
+    </li>
+
+    <% if current_login.level_id > 1 %>
+        <li >
+          <%= link_to turn_level_path(2) do %>
+              <i class="icon-money"></i>
+              Fila de $75
+          <% end %>
+        </li>
+    <% end %>
+
+    <% if current_login.level_id > 2 %>
+        <li >
+          <%= link_to turn_level_path(3) do %>
+              <i class="icon-money"></i>
+              Fila de $125
+          <% end %>
+        </li>
+    <% end %>
+
+  </ul>
+</li>
+
+<li class="tooltips" data-placement="left" data-original-title="Frontend&nbsp;Theme For&nbsp;Metronic&nbsp;Admin">
+  <a href="javascript:;" >
+    <i class="icon-gift"></i>
+    <span class="title">Pasos para Turnos</span>
+    <span class="arrow "></span>
+  </a>
+  <ul class="sub-menu">
+    <li >
+      <%= link_to turn_wizard_path(1) do %>
+          <i class="icon-ok-sign"></i>
+          Turno de $25
+      <% end %>
+    </li>
+    <% if current_login.level_id > 1 %>
+    <li >
+      <%= link_to turn_wizard_path(2) do %>
+          <i class="icon-ok-sign"></i>
+          Turno de $75
+      <% end %>
+    </li>
+    <% end %>
+    <% if current_login.level_id > 2 %>
+    <li >
+      <%= link_to turn_wizard_path(3) do %>
+          <i class="icon-ok-sign"></i>
+          Turno de $125
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+</li>
+
+<li class="">
+  <a href="javascript:;">
+    <i class="icon-user"></i>
+    <span class="title">Referidos</span>
+    <span class="arrow "></span>
+  </a>
+  <ul class="sub-menu">
+    <li >
+      <%= link_to "Mis Referidos", mis_referidos_path %>
+    </li>
+    <li >
+      <%= link_to "Nuevo Referido", new_login_registration_path %>
+    </li>
+  </ul>
+</li>
+
+<li class="" style="display: none;">
+  <a href="javascript:;">
+    <i class="icon-cogs"></i>
+    <span class="title">Soporte</span>
+    <span class="arrow "></span>
+  </a>
+</li>
+<li class="">
+  <%= link_to show_page_path('faq') do %>
+    <i class="icon-info-sign"></i>
+    <span class="title">Preguntas Frecuentes</span>
+  <% end %>
+</li>
+
+<li class="">
+  <%= link_to show_page_path('reglas') do %>
+    <i class="icon-warning-sign"></i>
+    <span class="title">Reglas y Funciones</span>
+  <% end %>
+</li>

@@ -1,0 +1,60 @@
+<!-- BEGIN TOP NAVIGATION MENU -->
+<ul class="nav navbar-nav pull-right">
+  <% if login_signed_in? %>
+<!-- BEGIN USER LOGIN DROPDOWN -->
+<li class="dropdown user">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+    <img alt="" src="/assets/admin/avatar.png" width="29" height="29"/>
+    <span class="username"><%= "#{current_login.username}" if login_signed_in? %></span>
+    <i class="icon-angle-down"></i>
+  </a>
+  <ul class="dropdown-menu">
+    <li>
+      <%= link_to edit_login_registration_path do %>
+          <i class="icon-user"></i> Mi Perfil
+      <% end %>
+
+    </li>
+    <li>
+      <%= link_to my_turns_path do %>
+          <i class="icon-tasks"></i> Mis Turnos <% if how_many_turns('active') > 0 %><span class="badge badge-success"><%= how_many_turns('active') %></span><% end %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to payments_path do %>
+          <i class="icon-money"></i> Pagos <% if payments_recently > 0 %> <span class="badge badge-success"><%= payments_recently %></span> <% end %>
+      <% end %>
+    </li>
+    <li class="divider"></li>
+    <li><a href="javascript:;" id="trigger_fullscreen"><i class="icon-move"></i> Pantalla Completa</a>
+    </li>
+    <li>
+      <%#= link_to(salir_path, remote: true) do %>
+      <%= link_to(destroy_login_session_path, method: :delete) do %>
+          <i class="icon-key"></i> Salir
+      <% end %>
+    </li>
+
+  </ul>
+</li>
+<% end %>
+<!-- END USER LOGIN DROPDOWN -->
+
+<% if manager_signed_in? %>
+  <li class="dropdown user admin">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+      <img alt="" src="/assets/admin/avatar.png" width="29" height="29"/>
+      <span class="username">Admin </span>
+      <i class="icon-angle-down"></i>
+    </a>
+    <ul class="dropdown-menu">
+      <li class="divider"></li>
+      <li><a href="javascript:;" id="trigger_fullscreen"><i class="icon-move"></i> Pantalla Completa</a>
+      </li>
+<% end %>
+    </ul>
+  </li>
+
+
+</ul>
+<!-- END TOP NAVIGATION MENU -->

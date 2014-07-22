@@ -1,0 +1,29 @@
+<li class="start active">
+  <a href="javascript:;">
+    <i class="icon-cogs"></i>
+    <span class="title">Administrador</span>
+    <span class="selected"></span>
+    <span class="arrow open"></span>
+  </a>
+  <ul class="sub-menu">
+    <li >
+      <%= link_to 'Turnos', admin_turns_path %>
+    </li>
+    <li >
+      <%= link_to 'Pagos', admin_payments_path %>
+    </li>
+    <li >
+      <%= link_to "Usuarios", admin_logins_path %>
+    </li>
+    <li >
+      <%= link_to "Capacidades", admin_capacities_path %>
+    </li>
+    <li >
+      <%= link_to "Niveles", admin_levels_path %>
+    </li>
+    <li >
+      <%= link_to "Paginas", admin_pages_path %>
+    </li>
+
+  </ul>
+</li>

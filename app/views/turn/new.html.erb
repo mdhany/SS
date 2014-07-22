@@ -1,0 +1,14 @@
+<% @title = 'Crear Turno' %>
+
+<div class="row">
+  <div class="col-md-4">
+    <h3>Correcto!</h3>
+    <p><b>Ya puedes crear tu Turno. Solo haz click en siguiente enlace y listo!:</b></p>
+  </div>
+  <div class="col-md-4" style="padding-top: 30px;">
+    <%= form_tag(:turns) %>
+        <%= hidden_field_tag :login_id, current_login.id %>
+        <%= hidden_field_tag :level_id, params[:level_id] %>
+        <%= submit_tag 'Crear Turno', class: 'btn green' %>
+  </div>
+</div>

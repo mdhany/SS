@@ -1,0 +1,43 @@
+<div class="form-body">
+  <ul class="nav nav-pills nav-justified steps">
+    <li>
+      <a href="javascript:;" class="step">
+        <span class="number">1</span>
+        <span class="desc"><i class="icon-ok"></i> Pagar a Turno en Posición</span>
+      </a>
+    </li>
+    <li>
+      <a href="javascript:;" class="step">
+        <span class="number">2</span>
+        <span class="desc"><i class="icon-ok"></i> Validar Referido</span>
+      </a>
+    </li>
+    <li class="active">
+      <a href="#tab3" data-toggle="tab" class="step active">
+        <span class="number">3</span>
+        <span class="desc"><i class="icon-ok"></i> Solicitar Creación de Turno</span>
+      </a>
+    </li>
+  </ul>
+  <div id="bar" class="progress progress-striped" role="progressbar">
+    <div class="progress-bar progress-bar-success" style="width: 90%; "></div>
+  </div>
+  <div class="tab-content">
+        <div class="tab-pane active" id="tab3">
+
+          <div class="row">
+            <div class="col-md-4 col-md-offset-1">
+              <h3>Al Fin! A la fila para Cobrar</h3>
+              <p><b>Haz click en siguiente enlace y solicita tu Turno:</b></p>
+            </div>
+            <div class="col-md-4" style="padding-top: 30px;">
+              <%= link_to new_turn_path(params[:level_id]), class: 'btn btn-lg green' do  %>
+                  Solicitar Turno
+                  <i class="icon-plus"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+  </div>
+</div>

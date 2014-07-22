@@ -1,0 +1,44 @@
+<% @title = "Actividad de #{@login.username}" %>
+<h3><b>Fila $25:</b> <%= @login.capacities.first.status %></h3>
+<% if @login.capacities.second %>
+<h3><b>Fila $75:</b> <%= @login.capacities.second.status %></h3>
+<% end %>
+<% if @login.capacities.third %>
+<h3><b>Fila $125:</b> <%= @login.capacities.last.status %></h3>
+<% end %>
+<div class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-picture"></i>Información</div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+      <a class="reload" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+      <table class="table table-condensed table-hover">
+        <thead>
+        <tr>
+          <th>Turno</th>
+          <th>Usuario</th>
+          <th>Fila</th>
+          <th>Estado</th>
+          <th>Pagos</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @login.turns.each do |t| %>
+            <tr>
+              <td><%= t.id %></td>
+              <td><%= t.login.username %></td>
+              <td><%= "$#{t.level.amount}" %></td>
+              <td><%= t.status %></td>
+              <td><%= t.payments.size %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

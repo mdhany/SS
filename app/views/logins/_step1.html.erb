@@ -1,0 +1,47 @@
+<div class="form-body">
+  <ul class="nav nav-pills nav-justified steps">
+    <li class="active">
+      <a href="#tab1" class="step active">
+        <span class="number">1</span>
+        <span class="desc"><i class="icon-ok"></i> Pagar a Turno en Posición</span>
+      </a>
+    </li>
+    <li>
+      <a href="javascript:;" class="step">
+        <span class="number">2</span>
+        <span class="desc"><i class="icon-ok"></i> Validar Referido</span>
+      </a>
+    </li>
+    <li>
+      <a href="javascript:;" class="step">
+        <span class="number">3</span>
+        <span class="desc"><i class="icon-ok"></i> Solicitar Creación de Turno</span>
+      </a>
+    </li>
+  </ul>
+  <div id="bar" class="progress progress-striped" role="progressbar">
+    <div class="progress-bar progress-bar-success" style="width: 35%;"></div>
+  </div>
+  <div class="tab-content">
+    <% if have_capacity?(params[:level_id].to_i) %>
+        <div class="tab-pane active" id="tab1">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-1">
+              <h3>Pagar a Turno en Posición</h3>
+              <p><b>Verifica El Turno en posición y reserva tu espacio para pagar</b></p>
+              <%= link_to 'Pagar', turn_level_path(params[:level_id]), class: 'btn btn-lg green'  %>
+            </div>
+            <div class="col-md-4">
+            </div>
+          </div>
+        </div>
+    <% else %>
+        <div class="alert alert-danger">
+          <button class="close" data-dismiss="alert"></button>
+          No puedes crear un Turno pues no tienes capacidad. Espera completar El Turno Actual.
+        </div>
+
+    <% end %>
+
+  </div>
+</div>

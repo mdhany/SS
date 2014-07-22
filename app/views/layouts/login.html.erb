@@ -1,0 +1,45 @@
+<html lang="en" class="no-js"><!--<![endif]--><!-- BEGIN HEAD -->
+<head>
+  <meta charset="utf-8">
+  <title>SuperSan | La Fila Para Cobrar</title>
+  <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta content="320" name="MobileOptimized">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  <%= csrf_meta_tags %>
+</head>
+ <!-- BEGIN BODY -->
+<body class="login">
+<!-- BEGIN LOGO -->
+<div class="logo">
+  <%= image_tag "admin/logo-admin.png" %>
+</div>
+<!-- END LOGO -->
+<!-- BEGIN LOGIN -->
+<div class="content">
+  <% if notice %>
+      <div class="alert alert-success"><button class="close" data-dismiss="alert"></button><%= notice %></div>
+  <% end %>
+  <% if alert %>
+      <div class="alert alert-danger"><button class="close" data-dismiss="alert"></button><%= alert %></div>
+  <% end %>
+  <%= yield %>
+<!-- END LOGIN FORM -->
+</div>
+<!-- END LOGIN -->
+<!-- BEGIN COPYRIGHT -->
+<div class="copyright">
+  2014 &copy; SuperSan. Todos los derechos reservados.
+</div>
+<!-- END COPYRIGHT -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<!-- END JAVASCRIPTS -->
+</body><!-- END BODY --></html>

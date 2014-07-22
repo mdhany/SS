@@ -1,0 +1,38 @@
+<% @title = 'Pasos para Crear un Turno' %>
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+<div class="col-md-12">
+<div class="portlet box blue" id="form_wizard_1">
+<div class="portlet-title">
+  <div class="caption">
+    <i class="icon-reorder"></i><span class="step-title">Los 3 pasos</span>
+  </div>
+  <div class="tools hidden-xs">
+    <a href="javascript:;" class="collapse"></a>
+  </div>
+</div>
+<div class="portlet-body form">
+
+<div class="form-wizard">
+<% if @login_level.status == 'pagado' %>
+      <%= render 'step2' %>
+  <% elsif @login_level.status == 'referido' %>
+      <%= render 'step3' %>
+      <% else %>
+        <%= render 'step1' %>
+      <% end %>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<!-- END PAGE CONTENT-->
+
+<%= javascript_include_tag "jquery-validation/dist/jquery.validate.min" %>
+<%= javascript_include_tag "jquery-validation/dist/additional-methods.min" %>
+<%= javascript_include_tag "bootstrap-wizard/jquery.bootstrap.wizard.min" %>
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<%#= javascript_include_tag "admin/form-wizard" %>
+<!-- END PAGE LEVEL SCRIPTS -->
+<!-- END JAVASCRIPTS -->
