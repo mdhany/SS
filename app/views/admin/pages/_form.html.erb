@@ -1,0 +1,43 @@
+<%= form_for(@admin_page) do |f| %>
+  <% if @admin_page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_page.errors.count, "error") %> prohibited this admin_page from being saved:</h2>
+
+      <ul>
+      <% @admin_page.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="form-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'Titulo', class: 'control-label' %>
+            <%= f.text_field :title, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'URL', class: 'control-label' %><br>
+            <%= f.text_field :url, class: 'form-control' %>
+          </div>
+        </div>
+        </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="field form-group">
+            <%= f.label 'Contenido', class: 'control-label' %><br>
+            <%#= f.text_area :content, rows: 15, class: 'form-control' %>
+            <%= f.cktext_area :content, :class => 'someclass', :ckeditor => {:language => 'es'} %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="actions">
+    <%= f.submit class: 'btn green' %>
+  </div>
+<% end %>

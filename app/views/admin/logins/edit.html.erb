@@ -1,0 +1,6 @@
+<% @title = "Editar #{@admin_login.username} " %>
+
+<%= render 'form' %>
+
+<%= link_to 'Ver', admin_login_path(@admin_login) %> |
+<%= link_to 'Atras', admin_logins_path %>

@@ -1,0 +1,43 @@
+<% @title = 'Páginas' %>
+
+<%= link_to 'Crear Pagina', new_admin_page_path, class: 'btn blue' %>
+<p></p>
+<div class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-picture"></i>Fila de $25</div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+      <a class="reload" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+      <table class="table table-condensed table-hover">
+        <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>URL (Dirección)</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+
+        <tbody>
+    <% @admin_pages.each do |admin_page| %>
+      <tr>
+        <td><%= admin_page.title %></td>
+        <td><%= admin_page.url %></td>
+        <td><%= link_to 'Ver en Vivo', show_page_path(admin_page.url), class: 'btn red btn-xs' %>
+        <%= link_to 'Editar', edit_admin_page_path(admin_page), class: 'btn blue btn-xs'  %>
+        <%= link_to 'Eliminar', admin_page, method: :delete, data: { confirm: 'Seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+    </div>
+
+  </div>
+</div>
+
+<br>
+
+

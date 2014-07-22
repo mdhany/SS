@@ -1,0 +1,67 @@
+<%= form_for(@admin_payment, as: :admin_payment, url: admin_payment_path(@admin_payment)) do |f| %>
+
+        <% if @admin_payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_payment.errors.count, "error") %> prohibited this admin_payment from being saved:</h2>
+
+      <ul>
+      <% @admin_payment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <h5>Turno: <%= @admin_payment.turn_id %></h5>
+    <div class="form-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'Usuario', class: 'control-label' %>
+            <%= f.text_field :login_id, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'Beneficiario', class: 'control-label' %>
+            <%= f.text_field :beneficiary_id, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'Monto USD$', class: 'control-label' %><br>
+            <%= f.select(:amount, [[25, '25'], [75, '75'], [125, '125']], {}, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'Forma de Pago', class: 'control-label' %><br>
+            <%= f.select(:gateway, [[@admin_payment.login.account_type, @admin_payment.login.account_type], ['Western Union', 'Western Union'], ['Paypal', 'Paypal']], {}, class: "form-control input-xlarge") %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'Nivel', class: 'control-label' %><br>
+            <%= f.text_field :level_id, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'Enviado', class: 'control-label' %><br>
+            <%= f.select(:sent, [['No', false], ['Si', true]], {}, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'Recibido', class: 'control-label' %><br>
+            <%= f.select(:received, [['No', false], ['Si', true]], {}, class: "form-control") %>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit class: 'btn green' %>
+    </div>
+<% end %>

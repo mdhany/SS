@@ -1,0 +1,132 @@
+<% @title = 'ADMIN > Turnos' %>
+<div class="row">
+  <div class="col-md-6">
+    <%= link_to 'Crear Turno', new_admin_turn_path, class: 'btn blue' %>
+<p></p>
+  </div>
+</div>
+<div class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-picture"></i>Fila de $25</div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+      <a class="reload" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+      <table class="table table-condensed table-hover">
+        <thead>
+        <tr>
+          <th>Turno</th>
+          <th>Usuario</th>
+          <th>Estado</th>
+          <th>Pagos</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @turns.each do |t| %>
+            <tr>
+              <td><%= t.id %></td>
+              <td><%= t.login.username %></td>
+              <td><%= t.status %></td>
+              <td><%= t.payments.size %></td>
+              <td>
+                <%= link_to 'Ver', admin_turn_path(t), class: 'btn green btn-xs' %>
+                <%= link_to 'Editar', edit_admin_turn_path(t), class: 'btn green btn-xs' %>
+                <%= link_to 'Eliminar', admin_turn_path(t), method: :delete, data: { confirm: 'Are you sure?' } %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- FILA 2-->
+
+    <div class="portlet box blue">
+      <div class="portlet-title">
+        <div class="caption"><i class="icon-picture"></i>Fila de $75</div>
+        <div class="tools">
+          <a class="collapse" href="javascript:;"></a>
+          <a class="reload" href="javascript:;"></a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="table-responsive">
+          <table class="table table-condensed table-hover">
+            <thead>
+            <tr>
+              <th>Turno</th>
+              <th>Usuario</th>
+              <th>Estado</th>
+              <th>Pagos</th>
+              <th>Acciones</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% @turns2.each do |t| %>
+                <tr>
+                  <td><%= t.id %></td>
+                  <td><%= t.login.username %></td>
+                  <td><%= t.status %></td>
+                  <td><%= t.payments.size %></td>
+                  <td>
+                    <%= link_to 'Ver', view_turn_path(t.id) %>
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+<!-- FILA 3-->
+    <div class="portlet box purple">
+      <div class="portlet-title">
+        <div class="caption"><i class="icon-picture"></i>Fila de $125</div>
+        <div class="tools">
+          <a class="collapse" href="javascript:;"></a>
+          <a class="reload" href="javascript:;"></a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="table-responsive">
+          <table class="table table-condensed table-hover">
+            <thead>
+            <tr>
+              <th>Turno</th>
+              <th>Usuario</th>
+              <th>Estado</th>
+              <th>Pagos</th>
+              <th>Acciones</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% @turns3.each do |t| %>
+                <tr>
+                  <td><%= t.id %></td>
+                  <td><%= t.login.username %></td>
+                  <td><%= t.status %></td>
+                  <td><%= t.payments.size %></td>
+                  <td>
+                    <%= link_to 'Ver', view_turn_path(t.id) %>
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+

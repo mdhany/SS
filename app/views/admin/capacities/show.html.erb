@@ -1,0 +1,75 @@
+<div class="portlet box blue">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-reorder"></i>Capacidad ID: <%= @admin_capacity.id %></div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+      <a class="reload" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body form">
+    <!-- BEGIN FORM-->
+    <form role="form" class="form-horizontal">
+      <div class="form-body">
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3"><b>Nombre:</b></label>
+              <div class="col-md-9">
+                <p class="form-control-static"><%= @admin_capacity.name %></p>
+              </div>
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3"><b>Nivel:</b></label>
+              <div class="col-md-9">
+                <p class="form-control-static"><%= @admin_capacity.level_id %></p>
+              </div>
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3"><b>Capacidad:</b></label>
+              <div class="col-md-9">
+                <p class="form-control-static"><%= @admin_capacity.capacity %></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3"><b>Modificado:</b></label>
+              <div class="col-md-9">
+                <p class="form-control-static"><%= @admin_capacity.updated_at %></p>
+              </div>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3"><b>Usuario:</b></label>
+              <div class="col-md-9">
+                <p class="form-control-static"><%= @admin_capacity.login.username %> | <%= @admin_capacity.login_id %></p>
+              </div>
+            </div>
+          </div>
+          <!--/span-->
+
+        </div>
+        <!--/row-->
+
+      </div>
+
+    </form>
+    <!-- END FORM-->
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_admin_capacity_path(@admin_capacity), class: 'btn blue' %> |
+<%= link_to 'Back', admin_capacities_path %>

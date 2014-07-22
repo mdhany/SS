@@ -1,0 +1,215 @@
+<% @title = 'Adquirir Turno' %>
+
+<div class="row">
+  <div class="col-md-6 ">
+    <p>Para adquirir el Turno debes realizar el pago al usuario en posición. Anota y guarda los datos y las cuentas en un sitio seguro. </p>
+  </div>
+
+</div>
+
+    <h3 class="">Debes pagar <b class="text-success">US$ <%= @turnp.level.amount %></b> al Usuario en posición: <b><%= @turnp.login.username %></b></h3>
+
+<div class="row">
+  <div class="col-md-12 ">
+    <div class="portlet box red">
+      <div class="portlet-title">
+        <div class="caption">
+        <i class="icon-reorder"></i> Datos y Formas de pago
+      </div></div>
+        <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-6 ">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="control-label col-md-4"><strong>Titular:</strong></label>
+                  <div class="col-md-8">
+                    <p><%= @turnp.login.first_name %> <%= @turnp.login.last_name %></p>
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+            </div><!-- .row -->
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="control-label col-md-4"><strong>Email:</strong></label>
+                  <div class="col-md-8">
+                    <p><%= link_to @turnp.login.email, "mailto:#{@turnp.login.email}" %> </p>
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+            </div><!-- .row -->
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="control-label col-md-4"><strong>Teléfono:</strong></label>
+                  <div class="col-md-8">
+                    <p><%= @turnp.login.phone %></p>
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+            </div><!-- .row -->
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="control-label col-md-4"><strong>Móvil:</strong></label>
+                  <div class="col-md-8">
+                    <p><%= @turnp.login.mobile %></p>
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+            </div><!-- .row -->
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="control-label col-md-4"><strong>Skype:</strong></label>
+                  <div class="col-md-8">
+                    <p><%= link_to @turnp.login.skype, "skype:#{@turnp.login.skype}?call" %></p>
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+            </div><!-- .row -->
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="control-label col-md-4"><strong>Cuidad:</strong></label>
+                  <div class="col-md-8">
+                    <p><%= @turnp.login.city %></p>
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+            </div><!-- .row -->
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="control-label col-md-4"><strong>País:</strong></label>
+                  <div class="col-md-8">
+                    <p><%= @turnp.login.country %></p>
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+            </div><!-- .row -->
+
+          </div>
+          <div class="col-md-6 ">
+            <div class="well well-lg">
+              <div class="row">
+                <h3 style="margin-left: 25px;"><b>Opciones de Pagos</b></h3>
+              </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="control-label col-md-4"><strong><%= @turnp.login.account_type %>:</strong></label>
+                <div class="col-md-8">
+                  <p><%= @turnp.login.number_account %></p>
+                </div>
+              </div>
+            </div>
+            <!--/span-->
+        </div><!-- .row -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="control-label col-md-4"><strong>Western Union:</strong></label>
+                <div class="col-md-8">
+                  <p><%= @turnp.login.first_name %> <%= @turnp.login.last_name %>, <small><%= @turnp.login.city %>, <%= @turnp.login.country %></small></p>
+                </div>
+              </div>
+            </div>
+            <!--/span-->
+          </div><!-- .row -->
+              <% if !@turnp.login.paypal.nil? %>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="control-label col-md-4"><strong>Paypal:</strong></label>
+                  <div class="col-md-8">
+
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+                      <!-- Identify your business so that you can collect the payments. -->
+                      <input type="hidden" name="business"
+                             value="<%= @turnp.login.paypal %>">
+
+                      <!-- Specify a Donate button. -->
+                      <input type="hidden" name="cmd" value="_donations">
+
+                      <!-- Specify details about the contribution -->
+                      <input type="hidden" name="item_name" value="SuperSan - Regalo Para <%= @turnp.login.username %> de $<%= @turnp.level.amount %>">
+                      <input type="hidden" name="item_number" value="fila-25">
+                      <input type="hidden" name="amount" value="<%= @turnp.level.amount %>">
+                      <input type="hidden" name="currency_code" value="USD">
+
+                      <!-- Display the payment button. -->
+                      <input type="submit" name="submit" border="0" value="Pagar Vía PAYPAL" class="btn blue">
+                      <img alt="" border="0" width="1" height="1"
+                           src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+            </div><!-- .row -->
+            <% end %>
+        </div>
+        </div><!-- .row -->
+        </div> <!-- /.portlet-body -->
+    </div>
+    </div>
+  </div> <!-- .col-md-6 -->
+</div><!-- .row -->
+
+<%= form_for(@payment) do |f| %>
+    <% if @payment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+
+          <ul>
+            <% @payment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+    <div class="portlet box green">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-money"></i> Selecciona Forma de Pago
+        </div></div>
+      <div class="portlet-body">
+        <div class="form-group">
+           <%= f.select(:gateway, @gateways, {}, class: "form-control input-xlarge") %>
+        </div>
+      </div>
+    </div>
+
+<div class="row">
+  <div class="col-md-6 ">
+   <p><b>AHORA antes de pagar debes confirmar que realizarás el pago haciendo click en el siguiente botón:</b></p>
+  </div>
+  <div class="col-md-6 ">
+    <%= f.hidden_field :turn_id, value: @turnp.id %>
+    <%= f.hidden_field :level_id, value: @turnp.level_id %>
+    <%#= f.hidden_field :amount, value: @turnp.level.amount %>
+    <%= f.submit "Confirmar", class: 'btn btn-lg green' %>
+    <i>Haz click para confirmar y continuar</i>
+  </div>
+</div>
+
+
+<% end %> <!--Fin de FORM -->

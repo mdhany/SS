@@ -1,0 +1,64 @@
+<% @title = 'Pagos' %>
+
+<div class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-picture"></i>Tus Transacciones</div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+      <a class="reload" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+      <table class="table table-condensed table-hover">
+        <thead>
+        <tr>
+          <th>Turno</th>
+          <th>Usuario</th>
+          <th>Beneficiario</th>
+          <th>Estado</th>
+          <th>Método</th>
+          <th>Monto USD$</th>
+          <th>Creado</th>
+          <th>Info. del Pago</th>
+          <th colspan="2"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @payments.each do |p| %>
+            <tr>
+              <td><%= p.turn_id %></td>
+              <td><%= p.login.username %></td>
+              <td><%= p.beneficiary.username %></td>
+              <td>
+                <% if p.sent && p.received == true %>
+                    Confirmado
+                <% elsif p.sent == true && p.received == false %>
+                    Enviado
+                <% else %>
+                    Pendiente
+                <% end %>
+              </td>
+              <td><%= p.gateway %></td>
+              <td><%= p.amount %></td>
+              <td><%= p.updated_at.to_formatted_s(:short) %></td>
+              <td><small><%= p.comment %></small></td>
+              <% if p.sent == false && p.received == false && p.login.id == current_login.id %>
+                <td><%= link_to 'Enviar Pago', payment_path(p) %></td>
+              <% else %>
+                  <td><%= link_to 'Ver Detalles', payment_path(p) %></td>
+              <% end %>
+
+              <% if p.sent == true && p.received == false && p.beneficiary.id == current_login.id %>
+                  <td><%= link_to 'Confirmar Pago', payment_confirmation_path(p) %></td>
+            <% end %>
+              </tr>
+        <% end %>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+

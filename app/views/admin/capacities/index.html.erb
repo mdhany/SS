@@ -1,0 +1,49 @@
+<% @title = 'ADMIN > Capacidades de los Usuarios' %>
+<%= link_to 'Crear Capacidad', new_admin_capacity_path, class: 'btn blue' %>
+<p></p>
+<div class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-picture"></i>Fila de $25</div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+      <a class="reload" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+      <table class="table table-condensed table-hover">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Usuario</th>
+          <th colspan="2">Nivel</th>
+          <th>Estado</th>
+          <th>Capacidad</th>
+          <th >Acciones</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @admin_capacities.each do |admin_capacity| %>
+            <tr>
+              <td><%= admin_capacity.id %></td>
+              <td><%= admin_capacity.login.username %> (<%= admin_capacity.login_id %>)</td>
+              <td><%= admin_capacity.level_id %></td>
+              <td><%= admin_capacity.name %></td>
+
+              <td><%= admin_capacity.status %></td>
+              <td><%= admin_capacity.capacity %></td>
+              <td><%= link_to 'Ver', admin_capacity_path(admin_capacity), class: 'btn green btn-xs' %>
+              <%= link_to 'Editar', edit_admin_capacity_path(admin_capacity), class: 'btn green btn-xs' %>
+              <%= link_to 'Eliminar', admin_capacity_path(admin_capacity), method: :delete, data: { confirm: 'Seguro que desea borrarlo?' } %></td>
+            </tr>
+        <% end %>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+

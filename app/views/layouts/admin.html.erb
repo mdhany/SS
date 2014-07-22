@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+
+  <title><%= ('SuperSan |' && @title) or "SuperSan" %></title>
+  <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+   <meta content="" name="description" />
+   <meta content="" name="author" />
+   <meta name="MobileOptimized" content="320">
+   <!-- BEGIN GLOBAL MANDATORY STYLES -->
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+   <!-- END GLOBAL MANDATORY STYLES -->
+   <link rel="shortcut icon" href="favicon.ico" />
+
+  <%= csrf_meta_tags %>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed">
+   <!-- BEGIN HEADER -->   
+   <div class="header navbar navbar-inverse navbar-fixed-top">
+      <!-- BEGIN TOP NAVIGATION BAR -->
+      <div class="header-inner">
+         <!-- BEGIN LOGO -->
+           <%= link_to '/', class: 'navbar-brand' do %>
+            <%= image_tag "admin/logo-admin.png", class: "img-responsive" %>
+           <% end %>
+         <!-- END LOGO -->
+         <!-- BEGIN RESPONSIVE MENU TOGGLER --> 
+         <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+         <%= image_tag "admin/menu-toggler.png" %>
+         </a> 
+         <!-- END RESPONSIVE MENU TOGGLER -->
+        <%= render 'common/dropdown' %>
+      </div>
+      <!-- END TOP NAVIGATION BAR -->
+   </div>
+   <!-- END HEADER -->
+   <div class="clearfix"></div>
+   <!-- BEGIN CONTAINER -->   
+   <div class="page-container">
+      <!-- BEGIN SIDEBAR -->
+      <div class="page-sidebar navbar-collapse collapse">
+         <!-- BEGIN SIDEBAR MENU -->        
+         <ul class="page-sidebar-menu">
+            <li>
+               <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+               <div class="sidebar-toggler hidden-phone"></div>
+               <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+            </li>
+                <% if manager_signed_in? %>
+               <%= render 'common/menu_admin' %>
+                <% end %>
+                <%= render 'common/menu' %>
+
+
+
+         </ul>
+         <!-- END SIDEBAR MENU -->
+      </div>
+      <!-- END SIDEBAR -->
+      <!-- BEGIN PAGE -->
+      <div class="page-content">
+
+        <% if !@title.nil? %>
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row">
+          <div class="col-md-12">
+            <!-- NOTIFICATIONS -->
+            <% if notice %>
+                <div class="alert alert-success"><button class="close" data-dismiss="alert"></button><%= notice %></div>
+            <% end %>
+            <% if alert %>
+                <div class="alert alert-danger"><button class="close" data-dismiss="alert"></button><%= alert %></div>
+            <% end %>
+            <!-- NOTIFICATIONS -->
+
+            <!-- BEGIN PAGE TITLE-->
+            <h3 class="page-title">
+              <%= @title %>
+              <hr/>
+            </h3>
+          </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <% end %>
+
+         <!-- BEGIN PAGE CONTENT-->
+         <div class="row">
+            <div class="col-md-12">
+              <%= yield %>
+            </div>
+         </div>
+         <!-- END PAGE CONTENT-->
+      </div>
+      <!-- END PAGE -->    
+   </div>
+   <!-- END CONTAINER -->
+   <!-- BEGIN FOOTER -->
+   <div class="footer">
+      <div class="footer-inner">
+         2014 &copy; SuperSan. Todos los derechos reservados.
+      </div>
+      <div class="footer-tools">
+         <span class="go-top">
+         <i class="icon-angle-up"></i>
+         </span>
+      </div>
+   </div>
+   <!-- END FOOTER -->
+   <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+   <!-- BEGIN CORE PLUGINS -->   
+   <!--[if lt IE 9]>
+   <script src="/assets/plugins/respond.min.js"></script>
+   <script src="/assets/plugins/excanvas.min.js"></script>
+   <![endif]-->
+
+
+   <!-- END CORE PLUGINS -->
+   <script>
+      jQuery(document).ready(function() {
+         App.init();
+      });
+   </script>
+   <!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

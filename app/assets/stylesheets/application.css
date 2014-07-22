@@ -1,0 +1,78 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require "font-awesome/css/font-awesome.min"
+ *= require "bootstrap/css/bootstrap.min"
+ *= require "uniform/css/uniform.default"
+ *= require "admin/style-metronic"
+ *= require "admin/style"
+ *= require "admin/style-responsive"
+ *= require "admin/plugins"
+ *= require "admin/default"
+ *= require "admin/green"
+ *= require "admin/pages/login"
+ *= require_self
+ *= require logins
+ */
+
+.turn-base {
+    width: 895px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.turn-base .turns-wait{
+    padding-left: 6%;
+    width: 55%;
+    position: relative;
+    top: 310px;
+    display: inline-block;
+}
+
+.turn-base .turns-wait .t-wait{
+    width: 17%;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+}
+.no0{ top: -45px;}
+.no1{top: -35px;}
+.no2{top: -25px; margin-left: 10px;}
+.no3{ margin-left: 10px;top: -15px;}
+.no4{ margin-left: 10px; top: -5px;}
+
+.turn-base .turns-active{
+    left: 57.5%;
+    position: relative;
+    top: -220px;
+    display: inline-block;
+    text-align: center;
+}
+
+.turn-base .turns-active .pagos{
+ margin-top: 60px;
+}
+
+.turn-base .turns-active .pagos .desc{ float: left; }
+.turn-base .turns-active .pagos .percent{ float: right; font-weight: bolder; }
+.turn-base .turns-active .pagos #barpagos{ margin-top: 10px; height: 15px; }
+
+.pagar{ margin-top: -200px;}
+
+.circle{
+    width: 119px;
+    height: 150px;
+    text-align: center;
+    display: inline-block;
+    margin-right: -20px;
+}

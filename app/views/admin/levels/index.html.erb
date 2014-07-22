@@ -1,0 +1,39 @@
+<% @title = 'Niveles' %>
+
+<div class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-picture"></i>Administración</div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+      <a class="reload" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+      <table class="table table-condensed table-hover">
+        <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Monto USD$</th>
+          <th colspan="2"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+    <% @admin_levels.each do |admin_level| %>
+      <tr>
+        <td><%= admin_level.name %></td>
+        <td><%= admin_level.description %></td>
+        <td><%= admin_level.amount %></td>
+        <td><%= link_to 'Ver / Editar', edit_admin_level_path(admin_level), class: 'btn green btn-xs' %>
+       <%= link_to 'Eliminar', admin_level_path(admin_level), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Crear Nivel', new_admin_level_path, class: 'btn green' %>

@@ -1,0 +1,56 @@
+<%= form_for(@admin_capacity, as: :admin_capacity, url: admin_capacity_path(@admin_capacity)) do |f| %>
+    <% if @admin_capacity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_capacity.errors.count, "error") %> prohibited this admin_capacity from being saved:</h2>
+
+      <ul>
+      <% @admin_capacity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="form-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'Nombre Nivel', class: 'control-label' %>
+            <%= f.select(:name, [['beginner', 'beginner'], ['intermediate', 'intermediate'], ['avanced', 'avanced']], {}, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'Nivel', class: 'control-label' %><br>
+            <%= f.text_field :level_id, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'Capacidad', class: 'control-label' %><br>
+            <%= f.text_field :capacity, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'Estado', class: 'control-label' %><br>
+            <%= f.select(:status, [['inactive', 'inactive'], ['progress', 'progress'], ['pagado', 'pagado'], ['referido', 'referido'], ['active', 'active']], {}, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'Usuario ID', class: 'control-label' %><br>
+            <%= f.text_field :login_id, class: 'form-control' %>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+  <div class="actions">
+    <%= f.submit class: 'btn green' %>
+  </div>
+<% end %>

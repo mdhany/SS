@@ -1,0 +1,46 @@
+<% @title = "Editar Nivel" %>
+
+<%= form_for(@admin_level, as: :admin_level, url: admin_level_path(@admin_level)) do |f| %>
+
+    <% if @admin_level.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@admin_level.errors.count, "error") %> prohibited this admin_level from being saved:</h2>
+
+          <ul>
+            <% @admin_level.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'Nombre', class: 'control-label' %>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'Descripcion', class: 'control-label' %><br>
+            <%= f.text_area :description, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.label 'Monto US$', class: 'control-label' %><br>
+            <%= f.text_field :amount, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit class: 'btn green' %>
+    </div>
+<% end %>
+
+
+<%= link_to 'Back', admin_levels_path %>

@@ -1,0 +1,132 @@
+
+<div class="portlet box blue">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-reorder"></i>Información del Turno</div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+      <a class="reload" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body form">
+    <!-- BEGIN FORM-->
+    <form role="form" class="form-horizontal">
+      <div class="form-body">
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3"><b>Usuario:</b></label>
+              <div class="col-md-9">
+                <p class="form-control-static"><%= @turn.login.username %></p>
+              </div>
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3"><b>Estado:</b></label>
+              <div class="col-md-9">
+                <p class="form-control-static"><%= @turn.status %></p>
+              </div>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3"><b>Creado en:</b></label>
+              <div class="col-md-9">
+                <p class="form-control-static"><%= @turn.created_at %></p>
+              </div>
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3"><b>Fila:</b></label>
+              <div class="col-md-9">
+                <p class="form-control-static"><%= @turn.level.name %></p>
+              </div>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+      </div>
+
+    </form>
+    <!-- END FORM-->
+  </div>
+</div>
+
+<div class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-picture"></i>Pagos al Turno</div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+      <% if @turn.payments.empty? %>
+          <p>No han realizado pagos aún</p>
+      <% else %>
+          <table class="table table-condensed table-hover">
+            <thead>
+            <tr>
+              <th>Turno</th>
+              <th>Usuario</th>
+              <th>Beneficiario</th>
+              <th>Estado</th>
+              <th>Método</th>
+              <th>Monto USD$</th>
+              <th>Creado</th>
+              <th width="150">Info. de Pago</th>
+              <th colspan="3"></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% @turn.payments.each do |p| %>
+                <tr>
+                  <td><%= p.turn_id %></td>
+                  <td><%= p.login.username %></td>
+                  <td><%= p.beneficiary.username %></td>
+                  <td>
+                    <% if p.sent && p.received == true %>
+                        Confirmado
+                    <% elsif p.sent == true && p.received == false %>
+                        Enviado
+                    <% else %>
+                        Pendiente
+                    <% end %>
+                  </td>
+                  <td><%= p.gateway %></td>
+                  <td><%= p.amount %></td>
+                  <td><%= p.updated_at.to_formatted_s(:short) %></td>
+                  <td><small><%= p.comment %></small></td>
+                  <% if p.sent == true && p.received == true %>
+                      <td>----</td>
+                  <% elsif p.sent == true && p.received == false %>
+                      <td><%= link_to 'Confirmar Pago', payment_confirmation_path(p) %></td>
+                  <% else %>
+                      <td></td>
+                  <% end %>
+                </tr>
+            <% end %>
+            </tbody>
+
+          </table>
+      <% end # final de la condicional si empty? %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<%= link_to 'Edit', edit_admin_turn_path(@turn) %> |
+<%= link_to 'Back', admin_turns_path %>

@@ -1,0 +1,60 @@
+<% if @payment.sent == false && @payment.received == false %>
+<% flash.now.alert = "IMPORTANTE: Solo tienes #{distance_of_time_in_words(Time.current, 12.hours.since(@payment.created_at))} para enviar tu pago de lo contrario tu espacio apartado para pagar será eliminado y podrías ser sancionado." %>
+<% @title = '¿Realizaste el Pago?' %>
+<div class="row">
+  <div class="col-md-6 ">
+<p>Si ya realizaste el deposito ó trasnferencia bancaria puedes marcar tu pago como enviado.</p>
+<p><b>RECUERDA:</b> Si aún no has realizado tu pago, no puedes enviarlo, pues el Usuario en Posición puede Denunciarte y corres el riesgo de ser expulsado del sistema </p>
+  </div>
+
+  <div class="col-md-6 ">
+    <!-- <h4>Sube tu comprobante de pago</h4> -->
+    <%#= form_tag({action: :upload}, multipart: true) do %>
+        <%#= label_tag 'Selecciona la imagen' %>
+        <%#= file_field_tag :receipt %>
+        <%#= submit_tag 'Si, he realizado el Pago', class: 'btn btn-lg green m-icon-big payment_sent1221'%>
+    <%# end %>
+    <h5>Información del Pago <i>(# de Transacción / MTCN)</i></h5>
+
+    <%= form_tag(payment_sent_path(@payment), method: :patch) %>
+    <%= text_area_tag :comment, nil, size: "20x5", class: 'form-control' %>
+    <br>
+    <%= submit_tag 'Si, he realizado el Pago', class: 'btn btn-lg green m-icon-big payment_sent' %>
+    <%#= link_to 'Si, he realizado el Pago',payment_sent_path(@payment), method: :patch , class: 'btn btn-lg green m-icon-big payment_sent' %>
+        </div>
+</div>
+
+<% elsif @payment.sent == true && @payment.received == false %>
+
+    <% @title = 'Pago enviado' %>
+    <div class="row">
+      <div class="col-md-6 ">
+        <p>Como ya realizaste el pago, puedes contactar al Usuario en Posición para notificarle tu deposito y así agilizas la Fila</p>
+        </div>
+
+      <div class="col-md-6 ">
+        <a class="btn btn-lg default m-icon-big" href="javascript:;">Esparando Confirmación... </a>
+      </div>
+    </div>
+
+<% else %>
+
+    <% @title = 'Pago Completado' %>
+    <div class="row">
+      <div class="col-md-6 ">
+        <p>Este pago ha sido Confirmado por el usuario <b><%= @payment.beneficiary.username %></b>. He aquí los detalles:</p>
+
+        <p><b>Fecha: </b><%= @payment.created_at %></p>
+        <p><b>Beneficiario: </b><%= @payment.beneficiary.username %></p>
+        <p><b>Turno: </b><%= @payment.turn_id %></p>
+        <p><b>Fila: </b>$<%= @payment.level.amount %></p>
+        <p><b>Información del Pago:</b><br><%= @payment.comment %></p>
+      </div>
+
+      <div class="col-md-6 ">
+        <a class="btn btn-lg green m-icon-big" href="javascript:;">Confirmado</a>
+      </div>
+    </div>
+
+<% end %>
+

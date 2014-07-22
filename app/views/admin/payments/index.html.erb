@@ -1,0 +1,61 @@
+<% @title = 'Pagos' %>
+
+<%= link_to 'Crear Pago', new_admin_payment_path, class: 'btn blue' %>
+<p></p>
+<div class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-picture"></i>Tus Transacciones</div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+      <a class="reload" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+      <table class="table table-condensed table-hover">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Turno</th>
+          <th>Usuario</th>
+          <th>Beneficiario</th>
+          <th>Estado</th>
+          <th>Método</th>
+          <th>Monto</th>
+          <th>Modificacion</th>
+          <th>Info. del Pago</th>
+          <th colspan="2"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @admin_payments.each do |p| %>
+            <tr>
+              <td><%= p.id %></td>
+              <td><%= link_to p.turn_id, admin_turn_path(p.turn_id) %></td>
+              <td><%= link_to p.login.username, edit_admin_login_path(p.login) %></td>
+              <td><%= link_to p.beneficiary.username, edit_admin_login_path(p.beneficiary_id) %></td>
+              <td>
+                <% if p.sent && p.received == true %>
+                    Confirmado
+                <% elsif p.sent == true && p.received == false %>
+                    Enviado
+                <% else %>
+                    Pendiente
+                <% end %>
+              </td>
+              <td><%= p.gateway %></td>
+              <td>$<%= p.amount %></td>
+              <td><%= p.updated_at.to_formatted_s(:short) %></td>
+              <td><small><%= p.comment %></small></td>
+              <td><%= link_to 'Ver / Editar', edit_admin_payment_path(p), class: 'btn green btn-xs' %></td>
+              <td><%= link_to 'Eliminar', admin_payment_path(p), method: :delete, data: { confirm: 'Seguro que desea borrarlo?' } %></td>
+            </tr>
+        <% end %>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+

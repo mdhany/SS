@@ -1,0 +1,41 @@
+<% @title = 'Mis Referidos' %>
+
+<div class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-picture"></i>Usuarios</div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+      <a class="reload" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+      <table class="table table-condensed table-hover">
+        <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Email</th>
+          <th>Telefono</th>
+          <th>Celular</th>
+          <th>País</th>
+          <th>Actividad</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @logins.each do |user| %>
+            <tr>
+              <td><%= user.username %></td>
+              <td><%= link_to user.email, "mailto:#{user.email}" %></td>
+              <td><%= user.phone %></td>
+              <td><%= user.mobile %></td>
+              <td><%= user.country %></td>
+              <td><%= link_to 'Ver', login_activity_path(user.id), class: 'btn green btn-xs' %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
