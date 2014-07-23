@@ -17,7 +17,7 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
-every 1.minutes do
+every 1.hours do
   runner "Payment.destroy_payments_inactive"
 end
 

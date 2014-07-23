@@ -136,7 +136,7 @@ class PaymentsController < ApplicationController
     p = Payment.where(sent: false, received: false).last(5)
 
     p.each do |pa|
-      tp = pa.updated_at + 1.minutes
+      tp = pa.updated_at + 4.hours
       if Time.now > tp
         logger.info "CRON: Borrando Payments inactivos #{pa}"
         c = view_context.what_level(pa.level_id, pa.login)
