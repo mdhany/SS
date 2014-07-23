@@ -51,4 +51,4 @@ production:
   <<: *default
   database: ss_production
   username: ss
-  password: <%= ENV['SS_DATABASE_PASSWORD'] %>
+  password: Mdhany007
