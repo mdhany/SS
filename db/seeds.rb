@@ -25,8 +25,7 @@ lg = Login.create!(
     country: 'República Dominicana',
     city: 'Santo Domingo',
     level_id: 3,
-    account_type: 'Banco BHD',
-    number_account: 12868740011
+    account_type: 'Banco BHD'
 )
 Manager.create!(
     email: 'melvin.dani7@gmail.com',
