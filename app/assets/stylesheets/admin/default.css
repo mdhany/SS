@@ -115,13 +115,13 @@ ul.page-sidebar-menu > li.active > a .arrow.open:before {
   border-bottom: 1px solid #7d7d7d !important;
 }
 .page-sidebar .sidebar-search .submit {
-  background-image: url(/assets/admin/search-icon.png);
+  background-image: url(/img/search-icon.png);
 }
 /***
 Sidebar toggler
 ***/
 .sidebar-toggler {
-  background-image: url(/assets/admin/sidebar-toggler.jpg);
+  background-image: url(/img/sidebar-toggler.jpg);
   background-color: #242424;
 }
 /* search box bg color on expanded */
@@ -129,7 +129,7 @@ Sidebar toggler
   background-color: #3d3d3d !important;
 }
 .page-sidebar-closed .page-sidebar .sidebar-search.open .form-container .remove {
-  background-image: url("/assets/admin/sidebar-search-close.png");
+  background-image: url("/img/sidebar-search-close.png");
 }
 /* sub menu bg color on hover menu item */
 .page-sidebar-closed ul.page-sidebar-menu > li:hover .sub-menu {
@@ -140,14 +140,14 @@ Horizontal Menu(new in v1.2)
 ***/
 /*search*/
 .header .hor-menu .hor-menu-search-form-toggler.off {
-  background: #000000 url(/assets/admin/hor-menu-search-close.png) no-repeat center;
+  background: #000000 url(/img/hor-menu-search-close.png) no-repeat center;
 }
 .header .hor-menu .search-form {
   background: #000000;
 }
 .header .hor-menu .search-form .btn {
   color: #d6d6d6;
-  background: #000000 url(/assets/admin/search-icon.png) no-repeat center;
+  background: #000000 url(/img/search-icon.png) no-repeat center;
 }
 .header .hor-menu .search-form form input {
   color: #d6d6d6;
