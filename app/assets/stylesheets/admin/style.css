@@ -91,11 +91,6 @@ and thus doesn't properly apply the media queries in Bootstrap's CSS. To address
  * `.admin-responsive` class.)
  */
 
-.google-map-canvas,
-.google-map-canvas * { 
-  .box-sizing(content-box); 
-}
-
 /* Optional responsive image override */
 img { 
   max-width1: none; 
