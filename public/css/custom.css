@@ -1,0 +1,37 @@
+/* Add here all your CSS customizations */
+
+/* Header */
+header {
+	clear: both;
+	border-top: 5px solid #EDEDED;
+	background: #f6f6f6;
+	background: -moz-linear-gradient(top,  #f6f6f6 0%, #ffffff 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6f6f6), color-stop(100%,#ffffff));
+	background: -webkit-linear-gradient(top,  #f6f6f6 0%,#ffffff 100%);
+	background: -o-linear-gradient(top,  #f6f6f6 0%,#ffffff 100%);
+	background: -ms-linear-gradient(top,  #f6f6f6 0%,#ffffff 100%);
+	background: linear-gradient(to bottom,  #f6f6f6 0%,#ffffff 100%);
+	background-image:url(../images/bg-header-ss.jpg);
+	background-repeat:repeat-x;
+	background-position:center top;
+}
+header nav {
+    float: none;
+	margin-top:40px;
+}
+
+.span12 .lead{ margin-bottom:0;}
+
+
+
+@media (min-width: 1200px) {
+	header .span4{width: 300px;}
+	#MY_VIDEO_1{ left:60px;}
+	}
+	
+@media (min-width: 768px) and (max-width: 979px) {
+	
+	header .span4{width: 280px;}
+	header .offset2{ margin-left:40px;}
+	#MY_VIDEO_1{ left:0px;}
+	}

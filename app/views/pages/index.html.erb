@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<head>
+
+  <!-- Basic -->
+  <meta charset="utf-8">
+  <title>SuperSan - La Fila para cobrar</title>
+  <meta name="keywords" content="SuperSan" />
+  <meta name="description" content="SuperSan - La Fila para cobrar">
+
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Web Fonts  -->
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+  <!-- Libs CSS -->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/fonts/font-awesome/css/font-awesome.css">
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/theme-elements.css">
+
+  <!-- Current Page Styles -->
+  <link rel="stylesheet" href="vendor/revolution-slider/css/settings.css" media="screen" />
+  <link rel="stylesheet" href="vendor/revolution-slider/css/captions.css" media="screen" />
+
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+
+  <!-- Skin -->
+  <link rel="stylesheet" href="css/skins/green.css">
+
+  <!-- Responsive CSS -->
+  <link rel="stylesheet" href="css/bootstrap-responsive.css" />
+  <link rel="stylesheet" href="css/theme-responsive.css" />
+
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+  <!-- Head Libs -->
+  <script src="vendor/modernizr.js"></script>
+
+  <link href="http://vjs.zencdn.net/4.6/video-js.css" rel="stylesheet">
+  <script src="http://vjs.zencdn.net/4.6/video.js"></script>
+  <style type="text/css">
+      .vjs-default-skin .vjs-play-progress,
+      .vjs-default-skin .vjs-volume-level { background-color: #68bd00 }
+      .vjs-default-skin .vjs-control-bar { font-size: 80% }
+  </style>
+
+  <!--[if IE]>
+  <link rel="stylesheet" href="css/ie.css">
+  <![endif]-->
+
+  <!--[if lte IE 8]>
+  <script src="vendor/respond.js"></script>
+  <![endif]-->
+
+  <!-- Facebook OpenGraph Tags - Go to http://developers.facebook.com/ for more information.
+  <meta property="og:title" content="SuperSan"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="http://www.elsupersan.com"/>
+  <meta property="og:image" content="http://www.elsupersan.com/images/man-ss.png"/>
+  <meta property="og:site_name" content="SuperSan"/>
+  <meta property="fb:app_id" content=""/>
+  <meta property="og:description" content="SuperSan - La Fila para cobrar"/>
+  -->
+</head>
+<body>
+
+<div class="body">
+  <header>
+    <div class="container">
+      <div class="">
+        <div class="span4 offset2">
+          <h1 class="logo">
+            <a href="index222.html">
+              <img alt="SuperSan" src="images/logo-ss.png">
+            </a>
+          </h1>
+        </div>
+        <div class="span2">
+          <img src="images/man-ss.png" width="143" height="116" class="responsive">
+        </div>
+        <div class="span3">
+          <nav>
+            <ul class="nav nav-pills nav-main" id="mainMenu">
+              <% if login_signed_in? %>
+                  <li class="active">
+                    <a class="dropdown-toggle" href="javascript:;">
+                      Hola <%= current_login.username %>!
+                    </a>
+                  </li>
+                  <li>
+                    <%= link_to  'Ir a Oficina', turn_level_path(1), class: 'dropdown-toggle' %>
+                  </li>
+              <% else %>
+              <li class="active">
+                <a class="dropdown-toggle" href="http://elsupersan.com">
+                  Inicio
+                </a>
+              </li>
+              <li></li>
+              <li>
+                <a class="dropdown-toggle" href="logins/sign_in">acceder
+                </a>
+                <%= link_to  'Acceder', logins_sign_in_path, class: 'dropdown-toggle' %>
+              </li>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+
+    </div>
+  </header>
+
+  <div role="main" class="main">
+    <div id="content" class="content full">
+
+      <div class="slider-container">
+        <div class="slider" id="revolutionSlider">
+          <ul>
+            <li data-transition="fade" data-slotamount="10" data-masterspeed="300">
+              <img src="images/slide-bg.jpg" data-fullwidthcentering="on" alt="">
+
+              <div class="caption fade"
+                   data-x="50"
+                   data-y="50"
+                   data-speed="500"
+                   data-start="200"
+                   data-easing="easeOutExpo">
+                <video id="MY_VIDEO_1" class="video-js vjs-default-skin" controls
+                       preload="auto" autoplay width="700" height="400" poster="images/video-sprite.png"
+                       data-setup="{}">
+                  <source src="video.mp4" type='video/mp4'>
+                  <source src="video.webm" type='video/webm'>
+                  <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                </video>
+
+              </div>
+
+
+
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="home-intro">
+        <div class="container">
+
+          <div class="row">
+            <div class="span8">
+              <p>
+                Descubre cómo funciona <em>SuperSan</em> y las grandes posibilidades que te ofrece
+                <span>Descargando nuestra Presentación explicativa</span>
+              </p>
+            </div>
+            <div class="span4">
+              <div class="get-started">
+                <a href="#" class="btn btn-large btn-primary">Descargar PDF</a>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="container">
+
+        <div class="row center">
+          <div class="span12">
+            <h2 class="short">Ahora es la <strong>Oportunidad de Ganar</strong> a nivel mundial</h2>
+            <h4 class="lead">Sin Complicaciones y Fácil. Con el <strong>SuperSan</strong> La fila para Cobrar</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-section">
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="footer-ribon">
+          <span>Importante</span>
+        </div>
+        <div class="span4" align="center">
+          <img src="images/man2-ss.png" width="194" height="384" alt="SuperSan">
+        </div>
+        <div class="span8">
+          <h4>Términos y Condiciones</h4>
+
+          <p>Este sistema de intercambios NO NECESARIAMENTE a usted le tiene que funcionar. Usted participa en este sistema BAJO SU PROPIA RESPONSABILIDAD. El SuperSan y sus creadores no se hacen responsables de los resultados que usted obtenga al participar en este sistema.</p>
+
+          <p>SuperSan NO ES UNA EMPRESA. SuperSan es solo una plataforma gratuita y libre para realizar intercambios monetarios entre usuarios de forma consciente a nivel mundial.</p>
+          <p>SuperSan no se hace responsable por promesas hechas fuera de nuestros términos y condiciones acerca de lo que puede ofrecerle el sistema. SuperSan es solo un Sistema. </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        <div class="row">
+          <div class="span1" align="center">
+            <a href="http://elsupersan.com" class="logo">
+              <img src="images/logo-footer.png" alt="SuperSan" width="50" height="50">
+            </a>
+          </div>
+          <div class="span7">
+            <p>© Copyright 2014. Todos los derechos reservados.</p>
+          </div>
+          <div class="span4">
+            <nav id="sub-menu">
+              <ul>
+                <li><a href="supersan-2014.pdf">Explicación en PDF</a></li>
+                <% if !login_signed_in? %>
+                <li><%= link_to  'Acceder', logins_sign_in_path, class: 'dropdown-toggle' %></li>
+                <% end %>
+
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- Libs -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="vendor/jquery.js"><\/script>')</script>
+<script src="vendor/jquery.easing.js"></script>
+<script src="vendor/jquery.cookie.js"></script>
+<script src="vendor/bootstrap.js"></script>
+<script src="vendor/selectnav.js"></script>
+
+<script src="vendor/revolution-slider/js/jquery.themepunch.plugins.js"></script>
+<script src="vendor/revolution-slider/js/jquery.themepunch.revolution.js"></script>
+
+
+<script src="js/plugins.js"></script>
+
+<!-- Current Page Scripts -->
+<script src="js/views/view.home.js"></script>
+
+<!-- Theme Initializer -->
+<script src="js/theme.js"></script>
+
+</body>
+</html>
