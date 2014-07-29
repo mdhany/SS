@@ -21,8 +21,4 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Tu Pago ha sido Confirmado - elSuperSan.com')
   end
 
-  def test
-    mail(to: 'melvin.dani7@gmail.com', subject: 'Tu Pago ha sido Confirmado - elSuperSan.com', body: "La prueba d eemail #{Time.now}")
-  end
-
 end
