@@ -109,16 +109,16 @@ Content and content elements.
 
 .bx-wrapper .bx-prev:hover,
 .testimonials-v1 .left-btn:hover  {
-	background: url(../../img/sliders/bxslider/left-green-hover.png) no-repeat;
+	background: url(/assets/admin/sliders/bxslider/left-green-hover.png) no-repeat;
 }
 
 .bx-wrapper .bx-next:hover, 
 .testimonials-v1 .right-btn:hover  {
-	background: url(../../img/sliders/bxslider/right-green-hover.png) no-repeat;
+	background: url(/assets/admin/sliders/bxslider/right-green-hover.png) no-repeat;
 }
 
 .testimonials-v1 .item span.testimonials-slide {
-	background: #f8f8f8 url(../../img/sliders/carousel/corners-green.png) no-repeat right bottom;
+	background: #f8f8f8 url(/assets/admin/sliders/carousel/corners-green.png) no-repeat right bottom;
 }	
 
 /*Blockquote Box*/
@@ -154,7 +154,7 @@ a.btn-transparent:hover {
 
 /*Steps*/
 .front-steps.front-step-one {
-	background: #35aa47 url(../../img/steps/one.png) no-repeat right bottom;
+	background: #35aa47 url(/assets/admin/steps/one.png) no-repeat right bottom;
 }
 
 .front-steps.front-step-one:after { 
