@@ -119,8 +119,10 @@ class PaymentsController < ApplicationController
           @payment.update_attribute :comment, params[:comment]
         end
         redirect_to @payment, notice: 'Su pago ha sido enviado. Ahora debe esperar la confirmación'
-        #Send Email
-        UserMailer.payment_sent_email(@payment).deliver
+        if Rails.env.production?
+          #Send Email
+          UserMailer.payment_sent_email(@payment).deliver
+        end
       end
     else
       redirect_to @payment, alert: I18n.t('payments.payment_sent')
@@ -134,8 +136,10 @@ class PaymentsController < ApplicationController
         if @payment.update_attribute :received, true
           redirect_to view_turn_url(@payment.turn_id), notice: 'El pago ha sido confirmado exitosamente.'
           change_status_by_payment(@payment)
-          #Send Email
-          UserMailer.payment_received_email(@payment).deliver
+          if Rails.env.production?
+            #Send Email
+            UserMailer.payment_received_email(@payment).deliver
+          end
         end
       else
         redirect_to @payment, alert: I18n.t('payments.payment_sent')
