@@ -5,7 +5,7 @@
 
 # Example:
 #
-set :output, "/Users/melvindanis/RubymineProjects/ss/log/cron_log.log"
+set :output, "log/cron_log.log"
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
