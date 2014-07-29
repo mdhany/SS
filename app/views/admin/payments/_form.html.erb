@@ -35,7 +35,13 @@
         <div class="col-md-6">
           <div class="field form-group">
             <%= f.label 'Forma de Pago', class: 'control-label' %><br>
-            <%= f.select(:gateway, [[@admin_payment.login.account_type, @admin_payment.login.account_type], ['Western Union', 'Western Union'], ['Paypal', 'Paypal']], {}, class: "form-control input-xlarge") %>
+            <%= f.select(:gateway, [
+                    [@admin_payment.login.account_type, @admin_payment.login.account_type],
+                    [@admin_payment.login.account_type2, @admin_payment.login.account_type2],
+                    [@admin_payment.login.account_type3, @admin_payment.login.account_type3],
+                    ['Western Union', 'Western Union'],
+                    ['Paypal', 'Paypal']
+            ], {}, class: "form-control input-xlarge") %>
           </div>
         </div>
         <div class="col-md-6">

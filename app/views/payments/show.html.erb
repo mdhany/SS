@@ -1,5 +1,5 @@
 <% if @payment.sent == false && @payment.received == false %>
-<% flash.now.alert = "IMPORTANTE: Solo tienes #{distance_of_time_in_words(Time.current, 12.hours.since(@payment.created_at))} para enviar tu pago de lo contrario tu espacio apartado para pagar será eliminado y podrías ser sancionado." %>
+<% flash.now.alert = "IMPORTANTE: Solo tienes hasta #{1.hour.since(@payment.updated_at)} para enviar tu pago de lo contrario tu espacio APARTADO para pagar será eliminado." %>
 <% @title = '¿Realizaste el Pago?' %>
 <div class="row">
   <div class="col-md-6 ">
@@ -8,12 +8,6 @@
   </div>
 
   <div class="col-md-6 ">
-    <!-- <h4>Sube tu comprobante de pago</h4> -->
-    <%#= form_tag({action: :upload}, multipart: true) do %>
-        <%#= label_tag 'Selecciona la imagen' %>
-        <%#= file_field_tag :receipt %>
-        <%#= submit_tag 'Si, he realizado el Pago', class: 'btn btn-lg green m-icon-big payment_sent1221'%>
-    <%# end %>
     <h5>Información del Pago <i>(# de Transacción / MTCN)</i></h5>
 
     <%= form_tag(payment_sent_path(@payment), method: :patch) %>
