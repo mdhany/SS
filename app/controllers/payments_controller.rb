@@ -130,23 +130,6 @@ class PaymentsController < ApplicationController
       end
   end
 
-  #Busca los pagos apartados que aun no han sido enviados
-  # y si tienen más de 4horas los borra
-  def destroy_payments_inactive
-    p = Payment.where(sent: false, received: false).last(5)
-
-    p.each do |pa|
-      tp = pa.updated_at + 4.hours
-      if Time.now > tp
-        logger.info "CRON: Borrando Payments inactivos #{pa}"
-        c = view_context.what_level(pa.level_id, pa.login)
-        c.update_attribute :status, "inactive"
-        Payment.delete(pa)
-      end
-    end
-
-  end
-
   private
   #Cambia el status luego del ultimo pago
   def change_status_by_payment(p)

@@ -1,4 +1,4 @@
-<% @title = 'Adquirir Turno' %>
+<% @title = 'Apartar Pago' %>
 
 <div class="row">
   <div class="col-md-6 ">
@@ -7,7 +7,7 @@
 
 </div>
 
-    <h3 class="">Debes pagar <b class="text-success">US$ <%= @turnp.level.amount %></b> al Usuario en posición: <b><%= @turnp.login.username %></b></h3>
+    <h3 class="">Debes pagar <b class="text-success">US$ <%= @turnp.level.amount %></b> al Usuario en posición de cobro: <b><%= @turnp.login.username %></b></h3>
 
 <div class="row">
   <div class="col-md-12 ">
@@ -52,7 +52,7 @@
               </div>
               <!--/span-->
             </div><!-- .row -->
-
+            <% if !@turnp.login.mobile.nil? %>
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
@@ -64,7 +64,8 @@
               </div>
               <!--/span-->
             </div><!-- .row -->
-
+            <% end %>
+            <% if !@turnp.login.skype.nil? %>
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
@@ -76,7 +77,7 @@
               </div>
               <!--/span-->
             </div><!-- .row -->
-
+            <% end %>
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
@@ -200,13 +201,13 @@
 
 <div class="row">
   <div class="col-md-6 ">
-   <p><b>AHORA antes de pagar debes confirmar que realizarás el pago haciendo click en el siguiente botón:</b></p>
+   <p class="red"><b>Este paso es solo para APARTAR un espacio para PAGAR al Usuario en posición de cobro. Tienes 1 hora para realizar el pago y marcarlo como Enviado en la siguiente página:</b></p>
   </div>
   <div class="col-md-6 ">
     <%= f.hidden_field :turn_id, value: @turnp.id %>
     <%= f.hidden_field :level_id, value: @turnp.level_id %>
     <%#= f.hidden_field :amount, value: @turnp.level.amount %>
-    <%= f.submit "Confirmar", class: 'btn btn-lg green' %>
+    <%= f.submit "Apartar Pago", class: 'btn btn-lg green' %>
     <i>Haz click para confirmar y continuar</i>
   </div>
 </div>
