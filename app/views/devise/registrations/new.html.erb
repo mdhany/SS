@@ -19,121 +19,128 @@
           <div class="row">
             <div class="col-md-6">
               <div class="field form-group">
-                <%= f.label 'Usuario', class: 'control-label' %>
+                <%= f.label 'Usuario', class: 'control-label' %><span class="required">*</span>
                 <%= f.text_field :username, class: 'form-control' %>
               </div>
-            </div>
-            <div class="col-md-6">
+
               <div class="field form-group">
-                <%= f.label :email, class: 'control-label' %><br>
+                <%= f.label :email, class: 'control-label' %><span class="required">*</span><br>
                 <%= f.email_field :email, class: 'form-control' %>
               </div>
-            </div>
-          </div>
 
-          <div class="row">
+
+                <div class="field form-group">
+                  <%= f.label 'Nombre', class: 'control-label' %><span class="required">*</span>
+                  <%= f.text_field :first_name, class: 'form-control' %>
+                </div>
+
+
+                <div class="field form-group">
+                  <%= f.label 'Apellido', class: 'control-label' %><span class="required">*</span><br>
+                  <%= f.text_field :last_name, class: 'form-control' %>
+                </div>
+
+
+                <div class="field form-group">
+                  <%= f.label "Identificación", class: 'control-label' %><span class="required">*</span><br>
+                  <%= f.text_field :identification, class: 'form-control' %>
+                  <span class="help-block">(SS, Cédula, Licencia Conducir)</span>
+                </div>
+
+
+                <div class="field form-group">
+                  <%= f.label 'País', class: 'control-label' %><span class="required">*</span><br>
+                  <%= f.country_select :country,{},{}, class: 'form-control' %>
+                </div>
+
+                <div class="field form-group">
+                  <%= f.label 'Cuidad', class: 'control-label' %><br>
+                  <%= f.text_field :city, class: 'form-control' %>
+                </div>
+
+            </div><!-- col6 -->
+
             <div class="col-md-6">
               <div class="field form-group">
-                <%= f.label 'Contraseña', class: 'control-label' %><br>
+                <%= f.label 'Contraseña', class: 'control-label' %><span class="required">*</span><br>
                 <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+                <span class="help-block">Mínimo 8 Caracteres</span>
               </div>
-            </div>
-            <div class="col-md-6">
               <div class="field form-group">
-                <%= f.label 'Confirmar Contraseña', class: 'control-label' %><br>
+                <%= f.label 'Confirmar Contraseña', class: 'control-label' %><span class="required">*</span><br>
                 <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
               </div>
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-6">
-              <div class="field form-group">
-                <%= f.label 'Nombre', class: 'control-label' %>
-                <%= f.text_field :first_name, class: 'form-control' %>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="field form-group">
-                <%= f.label 'Apellido', class: 'control-label' %><br>
-                <%= f.text_field :last_name, class: 'form-control' %>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="field form-group">
-                <%= f.label "Identificación", class: 'control-label' %><i> (SS, Cédula, Licencia Conducir)</i><br>
-                <%= f.text_field :identification, class: 'form-control' %>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="field form-group">
-                <%= f.label 'Teléfono', class: 'control-label' %><br>
-                <%= f.text_field :phone, class: 'form-control' %>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="field form-group">
-                <%= f.label 'Móvil', class: 'control-label' %><br>
-                <%= f.text_field :mobile, class: 'form-control' %>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="field form-group">
-                <%= f.label 'Skype', class: 'control-label' %><br>
-                <%= f.text_field :skype, class: 'form-control' %>
-              </div>
-            </div>
+                <div class="field form-group">
+                  <%= f.label 'Teléfono', class: 'control-label' %><br>
+                  <%= f.text_field :phone, class: 'form-control' %>
+                </div>
 
 
-          </div>
+                <div class="field form-group">
+                  <%= f.label 'Móvil', class: 'control-label' %><br>
+                  <%= f.text_field :mobile, class: 'form-control' %>
+                </div>
 
-          <div class="row">
-            <div class="col-md-6">
-              <div class="field form-group">
-                <%= f.label 'País', class: 'control-label' %><br>
-                <%= f.country_select :country,{},{}, class: 'form-control' %>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="field form-group">
-                <%= f.label 'Cuidad', class: 'control-label' %><br>
-                <%= f.text_field :city, class: 'form-control' %>
-              </div>
-            </div>
-            <div class="col-md-6">
+
+                <div class="field form-group">
+                  <%= f.label 'Skype', class: 'control-label' %><br>
+                  <%= f.text_field :skype, class: 'form-control' %>
+                </div>
+
               <div class="field form-group">
                 <%= f.label 'Estado / Provincia / Sector', class: 'control-label' %><br>
                 <%= f.text_field :state, class: 'form-control' %>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="field form-group">
-                <%= f.label 'Dirección', class: 'control-label' %><br>
-                <%= f.text_field :address, class: 'form-control' %>
-              </div>
-            </div>
 
-          </div>
+            </div><!-- col6 -->
+
+            </div> <!-- row -->
+
 
           <h3 class="form-section">Datos Financieros</h3>
           <div class="row">
             <div class="col-md-6">
               <div class="field form-group">
-                <%= f.label 'Nombre de Banco', class: 'control-label' %><br>
+                <%= f.label 'Nombre de Banco', class: 'control-label' %><span class="required">*</span><br>
                 <%= f.text_field :account_type, class: 'form-control' %>
               </div>
             </div>
             <div class="col-md-6">
               <div class="field form-group">
-                <%= f.label 'Número de Cuenta', class: 'control-label' %><br>
+                <%= f.label 'Número de Cuenta', class: 'control-label' %><span class="required">*</span><br>
                 <%= f.text_field :number_account, class: 'form-control' %>
+                <span class="help-block">Solo números (Sin Guiones ni espacios)</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="field form-group">
+                <%= f.label 'Nombre de Banco 2', class: 'control-label' %><br>
+                <%= f.text_field :account_type2, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="field form-group">
+                <%= f.label 'Número de Cuenta 2', class: 'control-label' %><br>
+                <%= f.text_field :number_account2, class: 'form-control' %>
+                <span class="help-block">Solo números (Sin Guiones ni espacios)</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="field form-group">
+                <%= f.label 'Nombre de Banco 3', class: 'control-label' %><br>
+                <%= f.text_field :account_type3, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="field form-group">
+                <%= f.label 'Número de Cuenta 3', class: 'control-label' %><br>
+                <%= f.text_field :number_account3, class: 'form-control' %>
+                <span class="help-block">Solo números (Sin Guiones ni espacios)</span>
               </div>
             </div>
           </div>
