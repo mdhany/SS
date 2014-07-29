@@ -118,6 +118,10 @@ class PaymentsController < ApplicationController
         if !params[:comment].nil?
           @payment.update_attribute :comment, params[:comment]
         end
+
+        #Send Email
+        UserMailer.deliver_payment_sent_email(@payment)
+
         redirect_to @payment, notice: 'Su pago ha sido enviado. Ahora debe esperar la confirmación'
       end
     else
@@ -131,6 +135,10 @@ class PaymentsController < ApplicationController
       if @payment.beneficiary.id == current_login.id
         if @payment.update_attribute :received, true
           redirect_to view_turn_url(@payment.turn_id), notice: 'El pago ha sido confirmado exitosamente.'
+
+          #Send Email
+          UserMailer.deliver_payment_received_email(@payment)
+
           change_status_by_payment(@payment)
         end
       else

@@ -25,8 +25,6 @@ class Login < ActiveRecord::Base
   validates :identification, presence: true, uniqueness: true, numericality: true, length: {maximum: 18}
   validates :country, presence: true
   validates :number_account, presence: true, uniqueness: true, numericality: true
-  validates :account_type,:account_type2,:account_type3, presence: true
-  validates :number_account2,:number_account3, uniqueness: true, numericality: true
 
 
   private
