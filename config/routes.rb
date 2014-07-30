@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :pages, :logins, :payments, :turns, :levels, :capacities
+    post 'logins/:id/used/:value', to: 'logins#change_used', as: 'change_login_used'
   end
 
   root 'pages#index'
