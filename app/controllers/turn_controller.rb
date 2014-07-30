@@ -41,12 +41,16 @@ class TurnController < ApplicationController
 
     @new_turn.level_id = params[:level_id]
     @new_turn.login_id = params[:login_id]
+    @new_turn.referred = params[:referred]
 
     if @new_turn.save
       #after create turn, change Capacity status to Active
       change_capacity_status(params[:level_id].to_i)
       #Cambiar estatus del Login
       change_status @new_turn.login, 'Active'
+      #Cambiar el REferido a USADO
+      change_login_used(params[:referred], true)
+      #redireccion
       redirect_to my_turns_path, notice: 'El Turno ha sido creado'
     end
     end

@@ -9,6 +9,7 @@
     <%= form_tag(:turns) %>
         <%= hidden_field_tag :login_id, current_login.id %>
         <%= hidden_field_tag :level_id, params[:level_id] %>
+        <%= hidden_field_tag :referred, @referred %>
         <%= submit_tag 'Crear Turno', class: 'btn green' %>
   </div>
 </div>

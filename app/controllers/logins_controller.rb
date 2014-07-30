@@ -31,7 +31,7 @@ class LoginsController < ApplicationController
   def wizard_turn
     @login_level = view_context.what_level(params[:level_id].to_i, @logged)
     #Buscar TODOS ó un referidos que su capacidad de esa fila este en status = 'pagado'
-    @referrals = @logged.referrals.where("level_id >= ?", params[:level_id].to_i)
+    @referrals = @logged.referrals.where("level_id >= ? AND used = ?", params[:level_id].to_i, false)
   end
 
   #para seleccionar un referido
@@ -45,7 +45,11 @@ class LoginsController < ApplicationController
         c = view_context.what_level(params[:level_id].to_i, @logged)
         #Cambiar status capacity
         if change_status(c, 'referido')
-          redirect_to turn_wizard_path
+          #redirect_to new
+          params[:level_id]
+          @referred = params[:referred]
+          render "turn/new"
+
           logger.debug "La Capacidad de este turno ha sido referida"
         end
       else

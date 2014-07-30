@@ -53,4 +53,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def change_login_used(login, value)
+    l = Login.find login
+    l.update_attribute :used, value
+  end
+
 end
