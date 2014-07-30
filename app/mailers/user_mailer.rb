@@ -15,7 +15,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def payment_received_email(payment)
-    @user = payment.login
+    @user = payment.beneficiary
     @payment = payment
     @url  = "http://elsupersan.com/turn_wizard/#{payment.level_id}"
     mail(to: @user.email, subject: 'Tu Pago ha sido Confirmado - elSuperSan.com')
