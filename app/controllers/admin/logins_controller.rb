@@ -62,6 +62,18 @@ class Admin::LoginsController < ApplicationController
     end
   end
 
+  def change_used
+    if params[:value] == "0"
+      v = false
+    else
+      v = true
+    end
+
+    if change_login_used(params[:id], v)
+      redirect_to admin_logins_url, notice: 'Usuario Fue Actualizado'
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_login

@@ -21,6 +21,7 @@
           <th>Celular</th>
           <th>País</th>
           <th>Acciones</th>
+          <th>Utilizado</th>
         </tr>
         </thead>
 
@@ -34,6 +35,15 @@
               <td><%= user.mobile %></td>
               <td><%= user.country %></td>
               <td><%= link_to 'Ver/Editar', edit_admin_login_path(user), class: 'btn green btn-xs' %></td>
+              <td>
+                <%=
+                    if user.used == true
+                      link_to 'Si', admin_change_login_used_path(user, 0), method: :post
+                    else
+                      link_to 'No', admin_change_login_used_path(user, 1), method: :post
+                    end
+                %>
+              </td>
               <td><%= link_to 'Eliminar', admin_login_path(user), method: :delete, data: { confirm: 'Seguro?' } %></td>
             </tr>
         <% end %>
