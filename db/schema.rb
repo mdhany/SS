@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711183714) do
+ActiveRecord::Schema.define(version: 20140730193533) do
 
   create_table "admin_pages", force: true do |t|
     t.string   "title"
@@ -56,12 +56,12 @@ ActiveRecord::Schema.define(version: 20140711183714) do
   end
 
   create_table "logins", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -74,19 +74,19 @@ ActiveRecord::Schema.define(version: 20140711183714) do
     t.string   "identification"
     t.string   "phone"
     t.string   "mobile"
-    t.integer  "number_account"
+    t.string   "number_account"
     t.string   "account_type"
     t.string   "status"
     t.string   "country"
     t.string   "city"
     t.string   "state"
-    t.string   "address"
     t.integer  "level_id",               default: 1
     t.integer  "role_id"
     t.integer  "sponsor_id"
     t.string   "paypal"
     t.string   "skype"
     t.string   "avatar"
+    t.boolean  "used",                   default: false
   end
 
   add_index "logins", ["email"], name: "index_logins_on_email", unique: true, using: :btree
@@ -165,32 +165,5 @@ ActiveRecord::Schema.define(version: 20140711183714) do
     t.datetime "updated_at"
     t.integer  "referred"
   end
-
-  create_table "users", force: true do |t|
-    t.string   "username"
-    t.string   "email"
-    t.string   "password"
-    t.string   "country"
-    t.string   "city"
-    t.string   "state"
-    t.string   "address"
-    t.integer  "level_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "identification",        limit: 8
-    t.integer  "phone"
-    t.integer  "mobile"
-    t.integer  "number_account"
-    t.string   "account_type"
-    t.string   "password_confirmation"
-    t.string   "status"
-    t.string   "firstname"
-    t.string   "lastname"
-  end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["identification"], name: "index_users_on_identification", unique: true, using: :btree
-  add_index "users", ["number_account"], name: "index_users_on_number_account", unique: true, using: :btree
-  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

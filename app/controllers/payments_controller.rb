@@ -26,14 +26,10 @@ class PaymentsController < ApplicationController
       @payment = Payment.new
       @gateways = [
           [@turnp.login.account_type, @turnp.login.account_type],
-          [@turnp.login.account_type2, @turnp.login.account_type2],
-          [@turnp.login.account_type3, @turnp.login.account_type3],
           ['Western Union', 'Western Union'],
           ['Paypal', 'Paypal']
       ]
-      @gateways.delete(1) if @turnp.login.number_account2.nil?
-      @gateways.delete(2) if @turnp.login.number_account3.nil?
-      @gateways.delete(4) if @turnp.login.paypal.nil?
+      @gateways.delete(2) if !@turnp.login.paypal.nil?
 
     else
       redirect_to root_path, alert: 'Actualmente no tienes Capacidad para realizar un Pago. Espera que tu Turno este completado'
