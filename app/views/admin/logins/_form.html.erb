@@ -29,6 +29,11 @@
           <div class="row">
             <div class="col-md-6">
               <div class="field form-group">
+                <%= f.label 'Patrocinador', class: 'control-label' %><span class="required">*</span>
+                <%= f.text_field :sponsor_id, class: 'form-control' %>
+                <span class='help-block'><%= @sponsor if action_name == 'edit' %></span>
+              </div>
+              <div class="field form-group">
                 <%= f.label 'Usuario', class: 'control-label' %><span class="required">*</span>
                 <%= f.text_field :username, class: 'form-control' %>
               </div>
@@ -111,36 +116,6 @@
               <div class="field form-group">
                 <%= f.label 'Número de Cuenta', class: 'control-label' %><span class="required">*</span><br>
                 <%= f.text_field :number_account, class: 'form-control' %>
-                <span class="help-block">Solo números (Sin Guiones ni espacios)</span>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="field form-group">
-                <%= f.label 'Nombre de Banco 2', class: 'control-label' %><br>
-                <%= f.text_field :account_type2, class: 'form-control' %>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="field form-group">
-                <%= f.label 'Número de Cuenta 2', class: 'control-label' %><br>
-                <%= f.text_field :number_account2, class: 'form-control' %>
-                <span class="help-block">Solo números (Sin Guiones ni espacios)</span>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="field form-group">
-                <%= f.label 'Nombre de Banco 3', class: 'control-label' %><br>
-                <%= f.text_field :account_type3, class: 'form-control' %>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="field form-group">
-                <%= f.label 'Número de Cuenta 3', class: 'control-label' %><br>
-                <%= f.text_field :number_account3, class: 'form-control' %>
                 <span class="help-block">Solo números (Sin Guiones ni espacios)</span>
               </div>
             </div>

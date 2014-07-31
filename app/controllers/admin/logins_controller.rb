@@ -20,6 +20,7 @@ class Admin::LoginsController < ApplicationController
 
   # GET /admin/logins/1/edit
   def edit
+    @sponsor = @admin_login.sponsor.username
   end
 
   # POST /admin/logins
