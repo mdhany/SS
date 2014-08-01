@@ -30,7 +30,7 @@ class Payment < ActiveRecord::Base
       p = c.updated_at + 4.hours
       if Time.now > p
         if c.update_attribute :received, true
-          u = view_context.what_level(p.level_id, p.login)
+          u = view_context.what_level(c.level_id, c.login)
           u.update_attribute :status, 'pagado'
 
           logger.info "CRON: Confirmando Pago Enviado #{p}"
