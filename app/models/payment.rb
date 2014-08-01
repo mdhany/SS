@@ -27,7 +27,7 @@ class Payment < ActiveRecord::Base
 
   def self.confirming_payment_automatic
     self.enviados.each do |c|
-      p = c.updated_at + 4.hours
+      p = c.updated_at + 8.hours
       if Time.now > p
         if c.update_attribute :received, true
           u = view_context.what_level(c.level_id, c.login)
